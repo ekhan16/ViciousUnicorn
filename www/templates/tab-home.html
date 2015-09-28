@@ -3,5 +3,9 @@
     <div>
       <p>You are in the Home Page</p>
     </div>
+    <ion-item collection-repeat="section in chapters">
+      Section {{section.sections}}:
+      <div>Story: {{section.content}}</div>
+    </ion-item>
   </ion-content>
 </ion-view>
