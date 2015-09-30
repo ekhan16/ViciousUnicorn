@@ -31,4 +31,11 @@ cursus venenatis enim ornare. Sed sagittis, lorem non pellentesque dapibus, tort
 risus tellus et ipsum.
 
 <EndScene2>
+<<<<<<< HEAD
 <EndChapter1>
+=======
+
+
+
+{Volume: {}, [scene1, scene2,], }
+>>>>>>> (feat) Add necessary node packages for server.
