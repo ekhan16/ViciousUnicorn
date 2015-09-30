@@ -1,16 +1,19 @@
-var fakeDocs = require('grabStory.js');
 
+
+var fakeDocs = require('./grabStory');
 var scraper = require('html-to-json');
 
-var promise = fakeDocs.getDocFromGoogleDrive().then(function(html){
-  return scraper.batch(html, {
-    volume: scraper.createParser(['h1', {
-      'volumeName': function($volume){
-        return $volume.text();
-      }
-    }])
+
+var StoryScraper = (function() {
+  var promise = fakeDocs.getDocFromGoogleDrive().then(function(html){
+    return scraper.batch(html, {
+      volume: scraper.createParser(['h1', {
+        'volumeName': function($volume){
+          return $volume.text();
+        }
+      }])
+    });
   });
-});
 
 // var promise = scraper.parse('<div>content</div>', {
 //   'text': function ($doc) {
@@ -18,9 +21,9 @@ var promise = fakeDocs.getDocFromGoogleDrive().then(function(html){
 //   }
 // });
 
-promise.done(function(result){
-  console.log(result);
-});
+  promise.done(function(result){
+    console.log(result);
+  });
+}());
 
-
-module.exports = scraper;
+module.exports = StoryScraper;
