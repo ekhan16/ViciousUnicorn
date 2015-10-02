@@ -3,6 +3,32 @@
     <div class="white">
       <p>You are in the Settings Page</p>
     </div>
-    {{test}}
-  </ion-content>
+<div class="row text-center" ng-controller="SettingsCtrl">
+    <ul class="draglist">
+        <li ng-repeat="obj in draggableObjects" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
+            <div ng-drag="true" ng-drag-data="obj" ng-class="obj.name">
+                {{obj.name}}
+            </div>
+        </li>
+    </ul>
+</div>
+
+ </ion-content>
 </ion-view>
+
+<!-- <div class="row text-center ng-scope" ng-controller="SettingsCtrl">
+  <ul ng-repeat="hack in [0]" class="draglist" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)" class="ng-scope">
+    <li>
+        <div ng-repeat="hack in [0]" ng-drag="true" ng-drag-data="obj" ng-class="obj.name" class="ng-binding two" draggable="false">
+          One
+        </div>
+    </li>
+    <li>
+      <div ng-repeat="hack in [0]" ng-drag="true" ng-drag-data="obj" ng-class="obj.name" class="ng-binding two" draggable="false">
+        Three
+      </div>
+    </li>
+  </ul>
+  </div> -->
+
+

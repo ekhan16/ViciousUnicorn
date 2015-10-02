@@ -17,3 +17,24 @@
 .white {
   color: white;
 }
+
+.draglist {
+  border: 1px solid green;
+  width: 100%;
+  height: 210px;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+[ng-drop] {
+  display: block;
+  position: relative;
+  float: left;
+}
+
+[ng-drag] {
+  border: 1px solid blue;
+  width: 57px;
+  height: 57px;
+  display: block;
+}
