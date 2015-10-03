@@ -1,8 +1,5 @@
-
-
 var fakeDocs = require('./grabStory');
 var scraper = require('html-to-json');
-
 
 var StoryScraper = (function() {
   var promise = fakeDocs.getDocFromGoogleDrive().then(function(html){
@@ -14,12 +11,6 @@ var StoryScraper = (function() {
       }])
     });
   });
-
-// var promise = scraper.parse('<div>content</div>', {
-//   'text': function ($doc) {
-//     return $doc.find('div').text();
-//   }
-// });
 
   promise.done(function(result){
     console.log(result);
