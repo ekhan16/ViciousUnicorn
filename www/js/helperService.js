@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ViciousUnicorn').service('helperService', function () {
+angular.module('ViciousUnicorn.helperService', []).service('helperService', function () {
     this.hello = function () {
         return "Hello World";
     };

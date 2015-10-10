@@ -1,11 +1,13 @@
 /* Empty. Add your own CSS if you like */
 
 .background {
-  background: url('../img/bgimage1.jpg') no-repeat;
+  background: url('#') no-repeat;
   background-size: cover;
   background-position: center;
   margin: auto;
 }
+
+/*../img/bgimage1.jpg*/
 
 /*.background1 {
   background: url('../img/bgimage2.jpg') no-repeat;

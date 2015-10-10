@@ -1,9 +1,27 @@
 angular.module('ViciousUnicorn.controllers', [])
 
-.controller('HomeCtrl', function($scope) {
-  $scope.chapters = [{sections: 1, content:'One day, Ekhan went to the mall.'},
-  {sections: 2,content:'Two days latter he got married to a woman.'},
-  {sections: 3, content:'Three years later, he was so whipped by his womean, he barely left the house.'}];
+.controller('HomeCtrl', function($scope, $http, helperService) {
+  $scope.quizName = 'js/dummyQuiz.js';
+
+  //If you wish, you may create a separate factory or service to call loadQuiz. To keep things simple, i have kept it within controller.
+  var loadQuiz = (function (file) {
+      $http.get(file)
+       .then(function (res) {
+           $scope.quiz = res.data.quiz;
+           $scope.questions = res.data.questions[0];
+           $scope.choice = res.data.questions[0].options;
+           debugger;
+       });
+  }('js/dummyQuiz.js'));
+
+  $scope.isCorrect = function(answer) {
+    if (answer.isAnswer == true) {
+      console.log("Well done")
+    }
+    else {
+      console.log("Try again")
+    }
+  }
 
 })
 
@@ -22,3 +40,4 @@ angular.module('ViciousUnicorn.controllers', [])
     $scope.draggableObjects[otherIndex] = otherObj;
     }
 });
+
