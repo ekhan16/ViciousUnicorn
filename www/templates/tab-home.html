@@ -3,9 +3,24 @@
     <div class="white">
       <p>You are in the Home Page</p>
     </div>
-    <ion-item collection-repeat="section in chapters">
+ <!--    <ion-item collection-repeat="section in chapters">
       Section {{section.sections}}:
-      <div>Story: {{section.content}}</div>
+      <div>Story: {{section.content}}</div> -->
+
+      <div id="quiz">
+          <h1 class="center">{{quiz.name}}</h1>
+          <hr />
+          <h2> {{questions.name}} </h2>
+          <form>
+            <div ng-repeat="x in choice">
+              <label> {{x.name}}
+                <input type="radio" ng-click="isCorrect(x)" name="name" value="{{x.name}}" required />
+              </label>
+
+            </div>
+          </form>
+
+      </div>
     </ion-item>
   </ion-content>
 </ion-view>
