@@ -40,3 +40,12 @@
   height: 57px;
   display: block;
 }
+
+.bottom-half {
+  padding: 0;
+  bottom: 10%;
+  position: absolute;
+  height: 30%;
+  display: inline-block;
+  vertical-align: bottom;
+}

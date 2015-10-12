@@ -10,9 +10,29 @@ angular.module('ViciousUnicorn.controllers', [])
            $scope.quiz = res.data.quiz;
            $scope.questions = res.data.questions[0];
            $scope.choice = res.data.questions[0].options;
-           debugger;
        });
   }('js/dummyQuiz.js'));
+
+  var loadText = (function(file) {
+    $http.get(file)
+    .then(function (res) {
+      txt = res.data
+      var appendTo = angular.element(document.querySelector(".text"));
+      appendTo.append(txt);
+    });
+  }('js/pages/page1.html'));
+
+  var nextPage = 2
+  $scope.loadMore = function() {
+    debugger;
+    $http.get('js/pages/page' + nextPage + '.html')
+    .then(function(res) {
+      nextPage++;
+      newTxt = res.data
+      var replaceWith = angular.element(document.querySelector(".text"));
+      replaceWith.replace(newTxt);
+    });
+  };
 
   $scope.isCorrect = function(answer) {
     if (answer.isAnswer == true) {

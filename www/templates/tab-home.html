@@ -2,25 +2,31 @@
   <ion-content class="padding background" scroll="false" >
     <div class="white">
       <p>You are in the Home Page</p>
-    </div>
- <!--    <ion-item collection-repeat="section in chapters">
-      Section {{section.sections}}:
-      <div>Story: {{section.content}}</div> -->
-
-      <div id="quiz">
-          <h1 class="center">{{quiz.name}}</h1>
-          <hr />
-          <h2> {{questions.name}} </h2>
-          <form>
-            <div ng-repeat="x in choice">
-              <label> {{x.name}}
-                <input type="radio" ng-click="isCorrect(x)" name="name" value="{{x.name}}" required />
-              </label>
-
-            </div>
-          </form>
-
+    </div><div class="bottom-half">
+          <div class="text">
+          </div>
+          <ion-infinite-scroll on-infinite="loadMore()" distance="70%"></ion-infinite-scroll>
       </div>
     </ion-item>
+
   </ion-content>
 </ion-view>
+
+<!--    <ion-item collection-repeat="section in chapters">
+     Section {{section.sections}}:
+     <div>Story: {{section.content}}</div> -->
+
+   <!--   <div id="quiz">
+         <h1 class="center">{{quiz.name}}</h1>
+         <hr />
+         <h2> {{questions.name}} </h2>
+         <form>
+           <div ng-repeat="x in choice">
+             <label> {{x.name}}
+               <input type="radio" ng-click="isCorrect(x)" name="name" value="{{x.name}}" required />
+             </label>
+
+           </div>
+         </form>
+
+     </div> -->
