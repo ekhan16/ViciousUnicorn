@@ -1,14 +1,12 @@
 <ion-view view-title="Home">
-  <ion-content class="padding background" scroll="false" >
+  <ion-content class="padding background">
     <div class="white">
       <p>You are in the Home Page</p>
     </div>
-      <div class="bottom-half">
+      <div class="bottom-half" on-tap="loadMore()">
           <div class="text">
           </div>
       </div>
-    </ion-item>
-    <ion-infinite-scroll on-infinite="loadMore()" distance="1%"></ion-infinite-scroll>
 
   </ion-content>
 </ion-view>

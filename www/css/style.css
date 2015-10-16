@@ -43,9 +43,9 @@
 
 .bottom-half {
   padding: 0;
-  bottom: 10%;
-  position: absolute;
-  height: 30%;
+  border: 1px solid red;
+  margin-top: 50%;
+  height: 500px;
   display: inline-block;
   vertical-align: bottom;
 }
