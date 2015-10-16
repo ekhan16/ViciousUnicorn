@@ -18,7 +18,7 @@ angular.module('ViciousUnicorn.controllers', [])
     .then(function (res) {
       txt = res.data
       var appendTo = angular.element(document.querySelector(".text"));
-      appendTo.append(txt);
+      appendTo.html(txt);
     });
   }('js/pages/page1.html'));
 
@@ -33,10 +33,6 @@ angular.module('ViciousUnicorn.controllers', [])
       replaceWith.html(newTxt);
     });
   };
-
-  $scope.loadMore();
-
-  $scope.$broadcast('scroll.infiniteScrollComplete');
 
   $scope.isCorrect = function(answer) {
     if (answer.isAnswer == true) {
