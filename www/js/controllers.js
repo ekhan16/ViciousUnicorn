@@ -24,15 +24,19 @@ angular.module('ViciousUnicorn.controllers', [])
 
   var nextPage = 2
   $scope.loadMore = function() {
-    debugger;
     $http.get('js/pages/page' + nextPage + '.html')
     .then(function(res) {
       nextPage++;
       newTxt = res.data
       var replaceWith = angular.element(document.querySelector(".text"));
-      replaceWith.replace(newTxt);
+      debugger;
+      replaceWith.html(newTxt);
     });
   };
+
+  $scope.loadMore();
+
+  $scope.$broadcast('scroll.infiniteScrollComplete');
 
   $scope.isCorrect = function(answer) {
     if (answer.isAnswer == true) {
