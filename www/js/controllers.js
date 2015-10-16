@@ -16,29 +16,20 @@ angular.module('ViciousUnicorn.controllers', [])
   var loadText = (function(file) {
     $http.get(file)
     .then(function (res) {
-      debugger;
-      txt = res.data
+      txt = res.data["Volume 1: The Journey to Hell"]["Chapter 1"]["Scene 1"]
       var appendTo = angular.element(document.querySelector(".text"));
       appendTo.html(txt);
     });
-  }('https://viciousunicorn.firebaseio.com/Sagas/-K0mgiqVcWumS9i-b8Ss/Volume%202%3A%20The%20Path%20of%20Rejection/Chapter%201/Scene%201.json'));
+  }('https://viciousunicorn.firebaseio.com/Sagas.json'));
 
   var nextPage = 2
   $scope.loadMore = function() {
-    $http.get('js/pages/page' + nextPage + '.html')
+    $http.get('https://viciousunicorn.firebaseio.com/Sagas.json')
     .then(function(res) {
-      nextPage++;
       newTxt = res.data
-      var replaceWith = angular.element(document.querySelector(".text"));
       debugger;
-      replaceWith.html(newTxt);
-    });
-  };
-
-  $scope.testResponse = function() {
-    $http({method: 'GET', url: 'http://localhost:3000', headers: {'Accept': 'application/json', 'Content-type': 'application/json'}})
-    .then(function(res) {
-      console.log(res)
+      // var replaceWith = angular.element(document.querySelector(".text"));
+      // replaceWith.html(newTxt);
     });
   };
 
