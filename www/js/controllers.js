@@ -16,11 +16,12 @@ angular.module('ViciousUnicorn.controllers', [])
   var loadText = (function(file) {
     $http.get(file)
     .then(function (res) {
+      debugger;
       txt = res.data
       var appendTo = angular.element(document.querySelector(".text"));
       appendTo.html(txt);
     });
-  }('js/pages/page1.html'));
+  }('https://viciousunicorn.firebaseio.com/Sagas/-K0mgiqVcWumS9i-b8Ss/Volume%202%3A%20The%20Path%20of%20Rejection/Chapter%201/Scene%201.json'));
 
   var nextPage = 2
   $scope.loadMore = function() {
@@ -31,6 +32,13 @@ angular.module('ViciousUnicorn.controllers', [])
       var replaceWith = angular.element(document.querySelector(".text"));
       debugger;
       replaceWith.html(newTxt);
+    });
+  };
+
+  $scope.testResponse = function() {
+    $http({method: 'GET', url: 'http://localhost:3000', headers: {'Accept': 'application/json', 'Content-type': 'application/json'}})
+    .then(function(res) {
+      console.log(res)
     });
   };
 
