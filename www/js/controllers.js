@@ -13,25 +13,59 @@ angular.module('ViciousUnicorn.controllers', [])
        });
   }('js/dummyQuiz.js'));
 
-  var loadText = (function(file) {
-    $http.get(file)
-    .then(function (res) {
-      txt = res.data["Volume 1: The Journey to Hell"]["Chapter 1"]["Scene 1"]
-      var appendTo = angular.element(document.querySelector(".text"));
-      appendTo.html(txt);
+var selectKey = function(integer) {
+  firebaseKeys = ["-K0rgU249rAUmFT7isk2", "-K0rgU0ulCQAQDeLbleC"];
+  return firebaseKeys[integer]
+};
+var orderedScenes = []
+var populateOrderedScenes = (function(file) {
+  $http.get(file)
+  .then(function(res) {
+    var obj = res.data
+    for (var key in obj )
+      if (obj.hasOwnProperty(key)) {
+        var volume = res.data[key];
+        console.log(volume)
+        for (var contents in volume) {
+          if (volume.hasOwnProperty(contents)) {
+            contents = volume[contents]
+            console.log(contents)
+            for (var chapters in contents) {
+              chapters = contents[chapters]
+              console.log(chapters)
+              for (var scenes in chapters) {
+                scenes = chapters[scenes]
+                console.log(scenes)
+                for (var scene in scenes) {
+                  scene = scenes[scene]
+                  console.log(scene)
+                  orderedScenes.push(scene)
+                  debugger;
+                }
+              }
+            }
+          }
+        }
+      }
+      debugger;
+      loadText();
     });
   }('https://viciousunicorn.firebaseio.com/Sagas.json'));
 
-  var nextPage = 2
+  var loadText = (function() {
+      txt = orderedScenes[0]
+      var appendTo = angular.element(document.querySelector(".text"));
+      appendTo.html(txt);
+  });
+
+  var nextPage = 1
   $scope.loadMore = function() {
-    $http.get('https://viciousunicorn.firebaseio.com/Sagas.json')
-    .then(function(res) {
-      newTxt = res.data
+      newTxt = orderedScenes[nextPage]
+      nextPage++
       debugger;
-      // var replaceWith = angular.element(document.querySelector(".text"));
-      // replaceWith.html(newTxt);
-    });
-  };
+      var replaceWith = angular.element(document.querySelector(".text"));
+      replaceWith.html(newTxt);
+    };
 
   $scope.isCorrect = function(answer) {
     if (answer.isAnswer == true) {
