@@ -4,19 +4,20 @@ angular.module('ViciousUnicorn.controllers', [])
   $scope.quizName = 'js/dummyQuiz.js';
 
   //If you wish, you may create a separate factory or service to call loadQuiz. To keep things simple, i have kept it within controller.
-  var loadQuiz = (function (file) {
-      $http.get(file)
+  var loadQuiz = function (file) {
+    debugger;
+      $http.get('js/dummyQuiz.js')
        .then(function (res) {
            $scope.quiz = res.data.quiz;
            $scope.questions = res.data.questions[0];
            $scope.choice = res.data.questions[0].options;
        });
-  }('js/dummyQuiz.js'));
+  };
 
-var selectKey = function(integer) {
-  firebaseKeys = ["-K0rgU249rAUmFT7isk2", "-K0rgU0ulCQAQDeLbleC"];
-  return firebaseKeys[integer]
-};
+// var selectKey = function(integer) {
+//   firebaseKeys = ["-K0rgU249rAUmFT7isk2", "-K0rgU0ulCQAQDeLbleC"];
+//   return firebaseKeys[integer]
+// };
 var orderedScenes = []
 var populateOrderedScenes = (function(file) {
   $http.get(file)
