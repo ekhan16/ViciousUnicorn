@@ -50,4 +50,15 @@ angular.module('ViciousUnicorn', ['ionic', 'firebase', 'firebase.ref', 'ngDragga
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/tab/home');
-  });
+  })
+
+.directive('ngIf', function() {
+    return {
+        link: function(scope, element, attrs) {
+            if(scope.$eval(attrs.ngIf)) {
+              debugger;
+                console.log("Got it!!!")
+            }
+        }
+    }
+});

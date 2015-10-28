@@ -3,16 +3,6 @@ angular.module('ViciousUnicorn.controllers', [])
 .controller('HomeCtrl', function($scope, $http, helperService) {
   $scope.quizName = 'js/dummyQuiz.js';
 
-  //If you wish, you may create a separate factory or service to call loadQuiz. To keep things simple, i have kept it within controller.
-  var loadQuiz = function (file) {
-    debugger;
-      $http.get('js/dummyQuiz.js')
-       .then(function (res) {
-           $scope.quiz = res.data.quiz;
-           $scope.questions = res.data.questions[0];
-           $scope.choice = res.data.questions[0].options;
-       });
-  };
 
 // var selectKey = function(integer) {
 //   firebaseKeys = ["-K0rgU249rAUmFT7isk2", "-K0rgU0ulCQAQDeLbleC"];
@@ -41,7 +31,6 @@ var populateOrderedScenes = (function(file) {
                   scene = scenes[scene]
                   console.log(scene)
                   orderedScenes.push(scene)
-                  debugger;
                 }
               }
             }
@@ -67,6 +56,17 @@ var populateOrderedScenes = (function(file) {
       var replaceWith = angular.element(document.querySelector(".text"));
       replaceWith.html(newTxt);
     };
+
+   $scope.loadQuiz = function () {
+    debugger;
+      $http.get('js/dummyQuiz.js')
+       .then(function (res) {
+           $scope.quiz = res.data.quiz;
+           $scope.questions = res.data.questions[0];
+           $scope.choice = res.data.questions[0].options;
+       });
+       loadMore();
+  };
 
   $scope.isCorrect = function(answer) {
     if (answer.isAnswer == true) {
